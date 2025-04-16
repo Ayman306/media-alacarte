@@ -1,0 +1,60 @@
+<nav class="shadow-lg fixed w-full top-0 z-50 md:p-[2rem] p-[0.8rem] bg-black ">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo -->
+      <div class="flex-shrink-0 logo w-[130px] h-auto">
+        <img #logo src="assets/images/media-alacarte-logo.png" alt="Logo" class="h-auto w-auto">
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#" #navItem class="text-base text-white hover:text-grey transition-colors duration-200">The Platform</a>
+        <a href="#" #navItem class="text-base text-white hover:text-grey transition-colors duration-200">Features</a>
+        <a href="#" #navItem class="text-base text-white hover:text-grey transition-colors duration-200">Benefits</a>
+        <a href="#" #navItem class="text-base text-white hover:text-grey transition-colors duration-200">Request a Demo</a>
+        <a href="#" #navItem class="text-base text-white hover:text-grey transition-colors duration-200">Contact Us</a>
+        <a href="#" #navItem class="text-base text-white hover:text-grey transition-colors duration-200">About Us</a>
+      </div>
+
+      <!-- Login Button -->
+      <div class="hidden md:block">
+        <button #loginBtn class="gradient-primary text-lg font-bold text-white px-[40px] py-[15px] cursor-pointer rounded-[50px] transition-colors duration-200">
+          Login
+        </button>
+        <!-- <button class="bg-gradient-to-br from-[#EF4F4F] via-[#EB3154] to-[#D9207C] text-lg font-bold text-white px-[40px] py-[15px] cursor-pointer rounded-[50px] transition-colors duration-200">
+          Login
+        </button> -->
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button (click)="toggleMenu()" class="text-white hover:text-stone-100 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path [attr.d]="isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden" [ngClass]="{'hidden': !isMenuOpen}">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Platform</a>
+        <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Features</a>
+        <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Benefits</a>
+        <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Request a Demo</a>
+        <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Contact Us</a>
+        <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">About Us</a>
+        <button class="w-full mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16"></div>

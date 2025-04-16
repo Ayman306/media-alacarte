@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+// **{
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+  
+// }
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    font-family: 'Raleway', sans-serif;
+}
+@layer components {
+    .gradient-primary {
+        @apply bg-gradient-to-br from-[#EF4F4F] via-[#EB3154] to-[#D9207C];
+    }
+}
