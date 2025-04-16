@@ -63,7 +63,7 @@ export class AnimationService {
     }
     gsap.from(element.nativeElement, {
       opacity: 0,
-      y: 10,
+      y: 20,
       duration: 2,
       ease: 'power3.out',
       delay:0.5
