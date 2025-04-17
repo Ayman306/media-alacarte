@@ -1,0 +1,29 @@
+.shadow-effect {
+    background: rgba(105, 67, 255, 0.2);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 0 50px rgba(105, 67, 255, 0.4),
+        0 0 100px rgba(105, 67, 255, 0.3),
+        0 0 150px rgba(105, 67, 255, 0.15),
+        inset 0 0 30px rgba(105, 67, 255, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: -1;
+}
+.overlay{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}

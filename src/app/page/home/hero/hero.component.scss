@@ -1,4 +1,4 @@
-.gradient-primary {
+.hero-btn {
   &:hover {
     background: white;
     // position: relative;
@@ -29,37 +29,34 @@
     }
   }
 }
-
-.moving-text-container {
-  transform: rotate(-5deg);
-}
-
-.moving-text-wrapper {
-  animation: moveText 20s linear infinite;
+.moving-text-container,.moving-text-container-2 {
   
-  .moving-text-1 {
-    animation: fadeInOut 10s ease-in-out infinite;
-  }
-  
-  .moving-text-2 {
-    animation: fadeInOut 10s ease-in-out infinite reverse;
-  }
+  width: 100vw;
+  // height: 100%;
+  overflow: hidden;
+  display: block;
 }
 
-@keyframes moveText {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+// .moving-text-container {
+//   transform: rotate(-5deg);
+// }
+// .moving-text-container-2 {
+//   transform: rotate(5deg);
+// }
+
+.moving-text-wrapper,.moving-text-wrapper-2 {
+  // position: relative;
+  // width: 100%;
+  // padding: 1rem 0;
 }
 
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-}
+
+// .moving-text {
+//   display: inline-block;
+//   white-space: nowrap;
+//   padding-right: 2rem;
+//   background: linear-gradient(145.58deg, #EF4F4F 4.18%, #EB3154 52.09%, #D9207C 100%);
+//   -webkit-background-clip: text;
+//   background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }

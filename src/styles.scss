@@ -16,6 +16,13 @@ body{
     .gradient-primary {
         @apply bg-gradient-to-br from-[#EF4F4F] via-[#EB3154] to-[#D9207C];
     }
+    .gradient-secondary {
+        @apply bg-gradient-to-br from-[#EF4F4F] via-[#EB3154] to-[#D9207C] relative;
+        &::before {
+            content: '';
+            @apply absolute inset-0 bg-black/30; /* 30% black overlay */
+        }
+    }
       .gradient-text {
         @apply bg-gradient-to-br from-[#EF4F4F] via-[#EB3154] to-[#D9207C] bg-clip-text text-transparent;
     }
