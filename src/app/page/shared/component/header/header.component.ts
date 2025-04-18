@@ -23,6 +23,32 @@ export class HeaderComponent implements AfterViewInit {
 
 
   isMenuOpen = false;
+  navElements=[
+    {
+     title:'The Platform',
+     id:'platform'
+    },
+    {
+      title:'Features',
+      id:'features'
+    },
+    {
+      title:'Benefits',
+      id:'benefits'
+    },
+    {
+      title:'Request a Demo',
+      id:'demo'
+    },
+    {
+      title:'Contact Us',
+      id:'contact'
+    },
+    {
+      title:'About Us',
+      id:'about'
+    }
+  ]
 
   ngAfterViewInit() {
     this.ngZone.runOutsideAngular(() => {
@@ -91,6 +117,14 @@ export class HeaderComponent implements AfterViewInit {
           ], { clearProps: 'all' });
         }
       });
+    }
+  }
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      this.toggleMenu();
     }
   }
 }

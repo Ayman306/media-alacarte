@@ -8,12 +8,9 @@
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8">
-        <a #navItem class="navItem text-base text-white  ">The Platform</a>
-        <a #navItem class="navItem text-base text-white  ">Features</a>
-        <a #navItem class="navItem text-base text-white  ">Benefits</a>
-        <a #navItem class="navItem text-base text-white  ">Request a Demo</a>
-        <a #navItem class="navItem text-base text-white  ">Contact Us</a>
-        <a #navItem class="navItem text-base text-white  ">About Us</a>
+        @for (item of navElements; track $index) {
+        <a #navItem class="navItem text-base text-white" (click)="scrollToSection(item.id)">{{item.title}}</a>
+        }
       </div>
 
       <!-- Login Button -->
@@ -41,12 +38,10 @@
          [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}"
          style="margin-top: 4.8rem;">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <a #mobileNavItem class="block px-3 py-2 text-white text-base rounded-md navItem opacity-0">Platform</a>
-        <a #mobileNavItem class="block px-3 py-2 text-white text-base rounded-md navItem opacity-0">Features</a>
-        <a #mobileNavItem class="block px-3 py-2 text-white text-base rounded-md navItem opacity-0">Benefits</a>
-        <a #mobileNavItem class="block px-3 py-2 text-white text-base rounded-md navItem opacity-0">Request a Demo</a>
-        <a #mobileNavItem class="block px-3 py-2 text-white text-base rounded-md navItem opacity-0">Contact Us</a>
-        <a #mobileNavItem class="block px-3 py-2 text-white text-base rounded-md navItem opacity-0">About Us</a>
+        @for (item of navElements; track $index) {
+
+        <a #mobileNavItem class="block px-3 py-2 text-white text-base rounded-md navItem opacity-0" (click)="scrollToSection(item.id)">{{item.title}}</a>
+        }
         <button #mobileLoginBtn class="w-full mt-4 gradient-primary text-white px-6 py-2 rounded-[50px] opacity-0">
           Login
         </button>
