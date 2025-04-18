@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, ViewChild, ElementRef, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, Inject, PLATFORM_ID, NgZone } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,9 +14,11 @@ export class AudienceComponent implements AfterViewInit {
   @ViewChild('counter3') counter3!: ElementRef;
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
+    private ngZone: NgZone
   ) {}
 
   ngAfterViewInit() {
+    this.ngZone.runOutsideAngular(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (isPlatformBrowser(this.platformId)) {
 
@@ -25,7 +27,8 @@ export class AudienceComponent implements AfterViewInit {
       this.initCountAnimation();
     }, 0);
   }
-  }
+})
+}
 
   private initCountAnimation() {
     // Counter 1: 0 to 110

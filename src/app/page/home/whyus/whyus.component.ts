@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export class WhyusComponent implements AfterViewInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
+    private ngZone: NgZone
   ) {}
   topGrids = [
     {
@@ -49,6 +50,7 @@ export class WhyusComponent implements AfterViewInit {
   @ViewChild('solution') solutionWords!: ElementRef;
   @ViewChild('smart') buyingWords!: ElementRef;
   ngAfterViewInit() {
+    this.ngZone.runOutsideAngular(() => {
     gsap.registerPlugin(ScrollTrigger);
     // Remove SplitText registration
 
@@ -61,6 +63,7 @@ export class WhyusComponent implements AfterViewInit {
 
   
     }
+  });
   }
 
   wordBreakAnimation(words: ElementRef) {

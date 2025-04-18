@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, ViewChildren, QueryList, ElementRef, ViewChild, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, ViewChildren, QueryList, ElementRef, ViewChild, AfterViewInit, Inject, PLATFORM_ID, NgZone } from '@angular/core';
 import gsap from 'gsap';
 import { AnimationService } from '../../../../core/services/animation.service';
 @Component({
@@ -13,6 +13,7 @@ import { AnimationService } from '../../../../core/services/animation.service';
 export class HeaderComponent implements AfterViewInit {
   constructor(private animationService: AnimationService,
     @Inject(PLATFORM_ID) private platformId: Object,
+    private ngZone: NgZone
   ) {}
   @ViewChild('logo') logo!: ElementRef;
   @ViewChild('loginBtn') loginBtn!: ElementRef;
@@ -24,6 +25,7 @@ export class HeaderComponent implements AfterViewInit {
   isMenuOpen = false;
 
   ngAfterViewInit() {
+    this.ngZone.runOutsideAngular(() => {
     if (isPlatformBrowser(this.platformId)) {
 
     setTimeout(() => {
@@ -32,6 +34,7 @@ export class HeaderComponent implements AfterViewInit {
       this.animationService.bottomToTopAnimation(this.logo);
     }, 0);
   }
+});
   }
 
   toggleMenu() {

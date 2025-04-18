@@ -1,10 +1,9 @@
-import { Component, AfterViewInit, QueryList, ViewChildren, ElementRef, Renderer2, PLATFORM_ID, Inject, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, QueryList, ViewChildren, ElementRef, PLATFORM_ID, Inject, ViewChild, NgZone } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 
-// Register ScrollTrigger
 
 @Component({
   selector: 'app-hero',
@@ -17,9 +16,11 @@ export class HeroComponent implements AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
+    private ngZone: NgZone
   ) {}
 
   ngAfterViewInit() {
+    this.ngZone.runOutsideAngular(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     if (isPlatformBrowser(this.platformId)) {
@@ -29,6 +30,8 @@ export class HeroComponent implements AfterViewInit {
         this.initializeTextLeftToRightAnimation('.moving-text-wrapper-2'); // Add this line
       }, 0);
     }
+  })
+
   }
 
   private initializeHeroAnimation() {

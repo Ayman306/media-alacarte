@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChildren, QueryList, ElementRef, OnInit, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import gsap from 'gsap';
 
 @Component({
