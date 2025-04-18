@@ -49,8 +49,9 @@ export class AudienceComponent implements AfterViewInit {
     });
 
     // Counter 2: 0 to 1M
-    gsap.to(this.counter2.nativeElement, {
-      innerHTML: 1000000,
+    let counter2Value = { value: 0 };
+    gsap.to(counter2Value, {
+      value: 1000000,
       duration: 2,
       ease: "power2.out",
       scrollTrigger: {
@@ -59,8 +60,8 @@ export class AudienceComponent implements AfterViewInit {
         toggleActions: "play none none none"
       },
       onUpdate: () => {
-        const value = Math.floor(this.counter2.nativeElement.innerHTML);
-        this.counter2.nativeElement.innerHTML = value >= 1000000 ? '1M' : value.toLocaleString();
+        const currentValue = Math.floor(counter2Value.value);
+        this.counter2.nativeElement.textContent = currentValue >= 1000000 ? '1M' : currentValue.toLocaleString();
       }
     });
 
