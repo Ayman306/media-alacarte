@@ -1,9 +1,9 @@
-<section class="mt-[13rem] md:mt-[20rem] h-screen w-screen">
+<section class="mt-[13rem] md:my-[20rem] my-[10rem] h-full w-screen">
     <section class="relative">
         <div class="gradient-primary rounded-xl flex justify-center items-center m-auto w-max ">
       <div class="shadow-effect"></div>
-    <div class="p-8 w-full">
-        <img src="assets/icons/services-icon.svg" alt="service" srcset="">
+    <div class="p-8 w-full icon flex justify-center items-center">
+        <img  src="assets/icons/services-icon.svg" alt="service" srcset="">
     </div>
 </div>
 </section>
@@ -15,13 +15,18 @@
 <section class="w-[75%] m-auto">
     <section class="flex justify-center items-center gap-4 px-4 mt-8">
         @for (service of services; track $index) {
-        <div class="grid relative flex items-end justify-end h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-center bg-no-repeat bg-cover rounded-xl p-3 md:p-6 cursor-pointer " 
+           
+        <div class="grid relative flex items-end justify-end h-[250px] sm:h-[300px] md:h-[480px] lg:h-[600px] bg-center bg-no-repeat bg-cover rounded-xl p-3 md:p-6 cursor-pointer " 
         [ngStyle]="{'background-image': 'url(' + service.image + ')'}" 
              [ngClass]="{
                'w-full sm:w-1/3 md:w-1/5': activeGrid === $index, 
                'w-full sm:w-1/2 md:w-1/5': activeGrid !== $index
              }"
              (click)="setActiveGrid($index)">
+             <div class="icon absolute z-2 gradient-primary left-full p-2 px-6 text-white font-medium text-sm md:text-base rounded-[50px] rounded-br-[0px] origin-bottom-left rotate-[-90deg] w-max " 
+                  [ngClass]="{'opacity-100': activeGrid !== $index, 'opacity-0': activeGrid === $index}">
+                    {{service.title}}
+            </div>
              <div class="absolute overlay w-full h-full top-0 left-0 z-0"></div>
             <div class="z-10 flex gap-2 flex-col md:flex-row justify-between w-full content-wrapper content-wrapper-{{$index}}"
                  [ngClass]="{'opacity-100': activeGrid === $index, 'opacity-0': activeGrid !== $index}">
@@ -31,10 +36,11 @@
                         {{service.description}}
                     </p>
                 </div>
-                <div class="p-2 md:p-3 gradient-primary rounded-full cursor-pointer m-auto w-[25px] sm:w-[30px] md:w-[60px] h-max service-button service-button-{{$index}}">
+                <div class="icon p-2 md:p-3 gradient-primary  rounded-full cursor-pointer m-auto w-[25px] sm:w-[30px] md:w-[60px] h-max service-button service-button-{{$index}}">
                     <img class="w-full" src="assets/icons/Arrow.svg" alt="arrow" srcset="">
                 </div>
             </div>
+        
         </div>
     }
     </section>

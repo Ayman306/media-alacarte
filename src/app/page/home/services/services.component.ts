@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, ViewChildren, QueryList, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import gsap from 'gsap';
 
 @Component({
@@ -9,11 +9,6 @@ import gsap from 'gsap';
   styleUrl: './services.component.scss'
 })
 export class ServicesComponent {
-  @ViewChildren('contentWrapper') contentWrappers!: QueryList<ElementRef>;
-  @ViewChildren('title') titles!: QueryList<ElementRef>;
-  @ViewChildren('description') descriptions!: QueryList<ElementRef>;
-  @ViewChildren('button') buttons!: QueryList<ElementRef>;
-  
   activeGrid: number = 0;
 
   setActiveGrid(index: number) {

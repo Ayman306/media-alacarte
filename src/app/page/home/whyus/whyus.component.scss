@@ -1,0 +1,40 @@
+// .infinite-gradient {
+//   position: absolute;
+//   width: 200%;
+//   height: 100%;
+//   background: linear-gradient(
+//     90deg,
+//     transparent 0%,
+//     rgba(239, 79, 79, 0.1) 25%,
+//     rgba(235, 49, 84, 0.1) 50%,
+//     rgba(217, 32, 124, 0.1) 75%,
+//     transparent 100%
+//   );
+//   animation: moveGradient 8s linear infinite;
+// }
+
+// @keyframes moveGradient {
+//   0% {
+//     transform: translateX(0);
+//   }
+//   100% {
+//     transform: translateX(-50%);
+//   }
+// }
+
+// .word-reveal {
+//   display: inline-block;
+//   margin: 0 0.3rem;
+//   opacity: 0;
+//   transform: translateY(20px);
+// }
+
+// .word {
+//   display: inline-block;
+//   overflow: hidden;
+// }
+
+// .char {
+//   display: inline-block;
+//   position: relative;
+// }

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, ViewChildren, QueryList, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, ViewChildren, QueryList, ElementRef, ViewChild, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import gsap from 'gsap';
 import { AnimationService } from '../../../../core/services/animation.service';
 @Component({
@@ -11,7 +11,9 @@ import { AnimationService } from '../../../../core/services/animation.service';
   ]
 })
 export class HeaderComponent implements AfterViewInit {
-  constructor(private animationService: AnimationService) {}
+  constructor(private animationService: AnimationService,
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) {}
   @ViewChild('logo') logo!: ElementRef;
   @ViewChild('loginBtn') loginBtn!: ElementRef;
   @ViewChildren('navItem') navItems!: QueryList<ElementRef>;
@@ -22,16 +24,20 @@ export class HeaderComponent implements AfterViewInit {
   isMenuOpen = false;
 
   ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+
     setTimeout(() => {
-      // this.animationService.bottomToTopStaggerAnimation(this.navItems.toArray());
-      // this.animationService.bottomToTopAnimation(this.loginBtn);
-      // this.animationService.bottomToTopAnimation(this.logo);
+      this.animationService.bottomToTopStaggerAnimation(this.navItems.toArray());
+      this.animationService.bottomToTopAnimation(this.loginBtn);
+      this.animationService.bottomToTopAnimation(this.logo);
     }, 0);
+  }
   }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
     if (this.isMenuOpen) {
+      document.body.style.overflow = 'hidden';
       // Menu opening animation
       gsap.fromTo('.md\\:hidden.fixed',
         { x: '100%' },
@@ -69,6 +75,7 @@ export class HeaderComponent implements AfterViewInit {
       );
     } else {
       // Menu closing animation
+      document.body.style.overflow = 'auto';
       gsap.to('.md\\:hidden.fixed', {
         x: '-100%',
         duration: 0.8,
