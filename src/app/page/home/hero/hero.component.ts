@@ -35,68 +35,47 @@ export class HeroComponent implements AfterViewInit {
   }
 
   private initializeHeroAnimation() {
-    // if (!isPlatformBrowser(this.platformId)) return;
-
     const timeline = gsap.timeline({
-      repeat:-1,
-      scrollTrigger: {
-        trigger: this.heroTexts.first.nativeElement,
-        start: 'top center',
-        end: 'bottom center',
-        toggleActions: 'play none none reverse',
-      }
+      repeat: -1
     });
 
-    this.heroTexts.forEach((text, index) => {
-      // Hide text initially to prevent flickering
-      gsap.set(text.nativeElement, { opacity: 0 });
-      
-      const split = new SplitType(text.nativeElement, { types: 'lines' });
-      
-      gsap.set(text.nativeElement, {
-        position: 'relative',
-        // height: '8rem',
-        overflow: 'visible',
-        opacity: 1
+    // Set initial state
+    this.heroTexts.forEach(text => {
+      gsap.set(text.nativeElement, { 
+        display: 'none',
+        y: 20,
+        position: 'relative'
       });
+    });
 
-      gsap.set(split.lines, {
-        position: 'absolute',
-        width: '100%',
-        left: '50%',
-        xPercent: -50,
-        padding: '0.5rem 0',
-        opacity: 0
-      });
-
+    this.heroTexts.forEach((text) => {
       timeline
-        .from(split.lines, {
-          y: 50,
-          opacity: 0,
-          scale: 0.5,
-          duration: 0.6,
-          ease: "power3.out",
+        .set(text.nativeElement, {
+          display: 'block'
         })
-        .to(split.lines, {
+        .to(text.nativeElement, {
           y: 0,
-          scale: 1,
-          opacity: 1,
           duration: 0.8,
+          ease: "power2.out"
+        })
+        .to(text.nativeElement, {
           backgroundImage: "linear-gradient(145.58deg, #EF4F4F 4.18%, #EB3154 52.09%, #D9207C 100%)",
           backgroundClip: "text",
           webkitBackgroundClip: "text",
+          webkitTextFillColor: "transparent",
           color: "transparent",
-          ease: "power2.inOut",
+          paddingBottom: "4px", // Add padding to prevent text cutoff
+          duration: 1
         })
-        .to(split.lines, {
+        .to(text.nativeElement, {
           y: -100,
-          scale: 0.5,
-          color: "white",
-          backgroundImage: "none",
-          opacity: 0,
-          duration: 0.6,
-          ease: "power3.in",
-          delay: 0.8
+          duration: 0.8,
+          opacity:0,
+          delay: 1,
+          ease: "power2.in"
+        })
+        .set(text.nativeElement, {
+          display: 'none'
         });
     });
 
